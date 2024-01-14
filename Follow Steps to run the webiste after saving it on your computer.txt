@@ -1,0 +1,40 @@
+first step open command prompt - 
+
+1 type ->
+	 pip install virtualenvwrapper-win
+
+
+2 type ->
+	mkvirtualenv test
+
+
+3 type ->
+ 	workon test
+
+4 type ->
+	pip install django
+	wait..... for a while
+
+5 type ->
+	mkdir projects
+	(create project folder)
+
+6 type ->
+	cd projects
+	(access project folder)
+
+8 type ->
+	django-admin startproject Tracking
+	(Tracking naam ka ek project bana rhe)
+
+9 type ->
+	cd Tracking
+	(access karo apne project ko)
+
+
+
+10 type ->
+	python manage.py runserver
+	(is code se server run hoga/by using this code, u can the run the server on 	localhost).
+
+done with all the stpes.
