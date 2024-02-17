@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link href="{% static 'css/register_main.css' %}" rel="stylesheet" />
+    <!--<script src="main.js"></script>-->
+</head>
+<body>
+    <div class="registration-container">
+        <div class="registration-box">
+            <h2>Register</h2>    
+            <form action="register" method="post" position="center">
+                {% csrf_token %}
+
+                <div class="input-group">
+                    <label for="first_name">First Name</label>
+                    <input type="text" id="first_name" name="first_name" required>
+                </div>
+                <div class="input-group">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" id="last_name" name="last_name" required>
+                </div>
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="Email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password1" name="password1" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" id="password2" name="password2" required>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <a href="login">Log in</a>.</p>
+        </div>
+    </div>
+
+    <div>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <h3 {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h3>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>

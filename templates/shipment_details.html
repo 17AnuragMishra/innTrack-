@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipment Details</title>
+</head>
+<body>
+
+    <h2>Shipment Details</h2>
+
+    {% if shipment %}
+        <p>Member Name: {{ shipment.member_id }}</p>
+        <p>Order Number: {{ shipment.order_number }}</p>
+        <p>Tracking ID: {{ shipment.tracking_id }}</p>
+        <p>Priority: {{ shipment.priority }}</p>
+        <p>Current Location: {{ shipment.current_location }}</p>
+        <p>Address: {{ shipment.destination }}</p>
+        <p>Delivery Date: {{ shipment.delivery_date }}</p>
+        <!-- Add other fields as needed -->
+    {% else %}
+        <p>No shipment details found for the provided order ID.</p>
+    {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+    <!--<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <script src="main.js"></script>-->
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-box">
+            <img src="modern-graphic.png" alt="Logo">
+            <h2>Login</h2>
+            <form action="login" method="post">
+                {% csrf_token %}
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <p class="signup-link">Don't have an account? <a href="{% url 'index' %}">Home</a> or <a href="{% url 'register' %}">Sign up</a>.</p>
+        </div>
+    </div>
+    
+    <div class="singup-link">
+        {% if messages %}
+            <ul class="messages">
+              {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+              {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
