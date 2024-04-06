@@ -1,5 +1,4 @@
-from django.shortcuts import render#, get_object_or_404
-
+from django.shortcuts import render, redirect#, get_object_or_404 
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -16,14 +15,28 @@ def about(request):
 def service(request):
     return render(request, 'service.html')
 
+from.models import Shipment
+
+# def shipment(request):
+#     order_number = request.GET.get('order_number')
+#     try:
+#         shipment = Shipment.objects.get(order_number=order_number)
+#     except Shipment.DoesNotExist:
+#         return render(request, 'index.html', {'message': f"Order ID {order_number} does not exist in the database."})
+#     return render(request, 'shipment.html', {'shipment': shipment})
+
+
 def shipment(request):
-    return render(request, 'shipment_details.html')
-
-
-
-
-
-
+    if request.method == 'POST':
+        order_number = request.POST['order_number']
+        try:
+            shipment = Shipment.objects.get(order_number=order_number)
+            return redirect('shipment')
+        except Shipment.DoesNotExist:
+            message = f"Order ID {order_number} does not exist in the database."
+    else:
+        message = ""
+    return render(request, 'index.html', {'message': message})
 
 
 

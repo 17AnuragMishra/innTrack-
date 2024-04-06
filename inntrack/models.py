@@ -12,5 +12,3 @@ class Shipment(models.Model):
     destination = models.CharField(max_length=100)
     delivery_date = models.IntegerField()
 
-    def __str__(self):
-        return self.order_number
